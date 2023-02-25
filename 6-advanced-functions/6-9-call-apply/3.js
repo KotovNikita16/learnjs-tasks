@@ -1,0 +1,23 @@
+"use strict";
+
+function debounce(func, delay) {
+    let isCooldown = false;
+    function timer() {
+        if (!isCooldown) {
+            func.apply(this, arguments);
+            isCooldown = true;
+            setTimeout(() => isCooldown = false, delay);
+        }
+    }
+
+    return timer;
+}
+
+let f = debounce(console.log, 1000);
+
+f(1); // выполняется немедленно
+f(2); // проигнорирован
+
+setTimeout( () => f(3), 100); // проигнорирован (прошло только 100 мс)
+setTimeout( () => f(4), 1100); // выполняется
+setTimeout( () => f(5), 1500); // проигнорирован (прошло только 400 мс от последнего вызова)

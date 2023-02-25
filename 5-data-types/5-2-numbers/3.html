@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function readNumber() {
+            let num;
+
+            do {
+                num = prompt("Введите число:", '');
+            } while(!isFinite(num) || num === null || num === '');
+
+            return +num;
+        }
+        alert(readNumber());
+    </script>
+</body>
+</html>
